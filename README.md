@@ -1,5 +1,6 @@
 # nnAudio2
 Audio processing by using pytorch 1D convolution network (based on nnAudio)
+Gammatone Spectrogram and SpecAugmentation are now available on GPU. 
 
 # Install
 ```
