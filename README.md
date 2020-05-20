@@ -5,7 +5,7 @@ Gammatone Spectrogram and SpecAugmentation are now available on GPU.
 
 # Install
 ```
-$ pip install nnAudio2
+$ pip install -i https://test.pypi.org/simple/ nnAudio2
 ```
 
 # Dependencies
