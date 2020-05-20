@@ -699,7 +699,7 @@ class MelSpectrogram(torch.nn.Module):
         return melspec    
 
 class Gammatonegram(torch.nn.Module):
-    """This function is to calculate the Gammatonegram of the input signal. Input signal should be in either of the following shapes. 1. ``(len_audio)``, 2. ``(num_audio, len_audio)``, 3. ``(num_audio, 1, len_audio)``. The correct shape will be inferred autommatically if the input follows these 3 shapes. Most of the arguments follow the convention from librosa. This class inherits from ``torch.nn.Module``, therefore, the usage is same as ``torch.nn.Module``.
+    """This function is to calculate the Gammatonegram of the input signal. Input signal should be in either of the following shapes. 1. ``(len_audio)``, 2. ``(num_audio, len_audio)``, 3. ``(num_audio, 1, len_audio)``. The correct shape will be inferred autommatically if the input follows these 3 shapes. This class inherits from ``torch.nn.Module``, therefore, the usage is same as ``torch.nn.Module``.
 
     Parameters
     ----------
@@ -710,7 +710,7 @@ class Gammatonegram(torch.nn.Module):
         The window size for the STFT. Default value is 2048
 
     n_mels : int
-        The number of Gammatonegram filter banks. The filter banks maps the n_fft to mel bins. Default value is 128
+        The number of Gammatonegram filter banks. The filter banks maps the n_fft to Gammatone bins. Default value is 64
     
     hop_length : int
         The hop (or stride) size. Default value is 512.
@@ -728,13 +728,13 @@ class Gammatonegram(torch.nn.Module):
         When ``False`` is used, the Mel scale is quasi-logarithmic. When ``True`` is used, the Mel scale is logarithmic. The default value is ``False`` 
     
     fmin : int
-        The starting frequency for the lowest Mel filter bank
+        The starting frequency for the lowest Gammatone filter bank
 
     fmax : int
-        The ending frequency for the highest Mel filter bank
+        The ending frequency for the highest Gammatone filter bank
 
     trainable_mel : bool
-        Determine if the Mel filter banks are trainable or not. If ``True``, the gradients for Mel filter banks will also be caluclated and the Mel filter banks will be updated during model training. Default value is ``False``
+        Determine if the Gammatone filter banks are trainable or not. If ``True``, the gradients for Mel filter banks will also be caluclated and the Mel filter banks will be updated during model training. Default value is ``False``
 
     trainable_STFT : bool
         Determine if the STFT kenrels are trainable or not. If ``True``, the gradients for STFT kernels will also be caluclated and the STFT kernels will be updated during model training. Default value is ``False``
@@ -752,7 +752,7 @@ class Gammatonegram(torch.nn.Module):
 
     Examples
     --------
-    >>> spec_layer = Spectrogram.MelSpectrogram()
+    >>> spec_layer = Spectrogram.Gammatonegram()
     >>> specs = spec_layer(x)
     """
 
@@ -772,7 +772,7 @@ class Gammatonegram(torch.nn.Module):
         self.wcos = torch.tensor(wcos, dtype=torch.float, device=self.device)
         
 
-        # Creating kenral for mel spectrogram
+        # Creating kenral for Gammatone spectrogram
         start = time()
         gammatone_basis = gammatone(sr, n_fft, n_bins, fmin, fmax)
         self.gammatone_basis = torch.tensor(gammatone_basis, device=self.device)
