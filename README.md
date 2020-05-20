@@ -21,6 +21,7 @@ librosa = 0.7.0 (Theortically nnAudio depends on librosa. But we only need to us
 
 # Quick Start
 Gammatone Spectrogram is now available in nnAudio2, and other details can be found in https://github.com/KinWaiCheuk/nnAudio.
+
 In addition, more audio augmentation methods are available in nnAudio2, according to https://github.com/qiuqiangkong/torchlibrosa.
 
 ### 1. STFT
