@@ -379,35 +379,8 @@ def gammatone(sr, n_fft, n_bins=64, fmin=20.0, fmax=None, htk=False,
         By default, uses 32-bit (single-precision) floating point.
     Returns
     -------
-    M         : np.ndarray [shape=(n_mels, 1 + n_fft/2)]
-        Mel transform matrix
-    Notes
-    -----
-    This function caches at level 10.
-    Examples
-    --------
-    >>> melfb = librosa.filters.mel(22050, 2048)
-    >>> melfb
-    array([[ 0.   ,  0.016, ...,  0.   ,  0.   ],
-           [ 0.   ,  0.   , ...,  0.   ,  0.   ],
-           ...,
-           [ 0.   ,  0.   , ...,  0.   ,  0.   ],
-           [ 0.   ,  0.   , ...,  0.   ,  0.   ]])
-    Clip the maximum frequency to 8KHz
-    >>> librosa.filters.mel(22050, 2048, fmax=8000)
-    array([[ 0.  ,  0.02, ...,  0.  ,  0.  ],
-           [ 0.  ,  0.  , ...,  0.  ,  0.  ],
-           ...,
-           [ 0.  ,  0.  , ...,  0.  ,  0.  ],
-           [ 0.  ,  0.  , ...,  0.  ,  0.  ]])
-    >>> import matplotlib.pyplot as plt
-    >>> plt.figure()
-    >>> librosa.display.specshow(melfb, x_axis='linear')
-    >>> plt.ylabel('Mel filter')
-    >>> plt.title('Mel filter bank')
-    >>> plt.colorbar()
-    >>> plt.tight_layout()
-    >>> plt.show()
+    G         : np.ndarray [shape=(n_bins, 1 + n_fft/2)]
+        Gammatone transform matrix
     """
 
     if fmax is None:
