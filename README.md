@@ -44,3 +44,8 @@ Spectrogram.Gammatonegram(sr=44100, n_fft=2048, n_bins=64, hop_length=512, windo
 
 #### The Gammatone filters by nnAudio2
 ![alt text](https://github.com/WangHelin1997/nnAudio2/blob/master/tips/gammatone.png)
+
+# References
+1. https://github.com/KinWaiCheuk/nnAudio
+2. https://github.com/qiuqiangkong/torchlibrosa
+3. https://github.com/mcusi/gammatonegram
